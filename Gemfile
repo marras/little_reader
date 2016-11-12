@@ -6,8 +6,10 @@ gem 'hanami',       '0.7.2'
 gem 'hanami-model', '~> 0.5'
 gem 'nokogiri', '1.6.7.2'
 gem 'therubyracer'
-gem 'sass-rails'
-gem 'twitter-bootstrap-rails'
+gem 'haml'
+gem 'sass'
+gem 'uglifier'
+gem 'pry'
 
 gem 'pg'
 
