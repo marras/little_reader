@@ -11,8 +11,6 @@ gem 'sass'
 gem 'uglifier'
 gem 'pry'
 
-gem 'pg'
-
 group :test do
   gem 'minitest'
   gem 'capybara'
