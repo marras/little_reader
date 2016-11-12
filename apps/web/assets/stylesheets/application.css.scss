@@ -1,0 +1,53 @@
+.result-box {
+  margin: auto;
+  width: 50%;
+  height: 200px;
+  font-size: 40pt;
+  p {
+    padding-top: 80px;
+    display: block;
+    text-align: center;
+  }
+}
+
+#success {
+  @extend .result-box;
+  background-color: #0F0;
+}
+
+#error {
+  @extend .result-box;
+  background-color: #F00;
+}
+
+#image {
+  margin: auto;
+  border: 1px solid black;
+  display: block;
+  max-width: 50%;
+  max-height: 300px;
+}
+
+#buttons {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  .link {
+    margin: 20px;
+    display: flex;
+
+    a {
+      padding: 15px;
+      background-color: #DDD;
+      font-size: 30pt;
+      font-family: sans-serif;
+      color: black;
+      text-decoration: none;
+      text-align: center;
+    }
+  }
+}

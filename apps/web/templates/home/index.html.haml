@@ -1,6 +1,13 @@
-%h1 Yo!
+.row
+  %img#image
 
-%p=files
+#buttons
+
+#success{hidden: true}
+  %p Super! :)
+
+#error{hidden: true}
+  %p Spróbuj jeszcze raz :(
 
 %script{type: 'text/javascript'}
   window.files = #{files}
