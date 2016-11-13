@@ -87,6 +87,7 @@ GEM
     tilt (2.0.5)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    unidecoder (1.1.2)
     url_mount (0.2.1)
       rack
     xpath (2.0.0)
@@ -108,6 +109,7 @@ DEPENDENCIES
   sass
   therubyracer
   uglifier
+  unidecoder
 
 BUNDLED WITH
    1.13.6

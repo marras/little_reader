@@ -10,6 +10,7 @@ gem 'haml'
 gem 'sass'
 gem 'uglifier'
 gem 'pry'
+gem 'unidecoder'
 
 group :test do
   gem 'minitest'

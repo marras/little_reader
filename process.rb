@@ -3,6 +3,7 @@
 require 'open-uri'
 require 'json'
 require 'webrick/httputils'
+require 'unidecoder'
 
 output = {}
 
@@ -21,12 +22,15 @@ File.open('lista.txt', 'rt') do |f|
     link = JSON.load(res)['items'].first['link']
     puts link
     output[word] = link
-    fout.puts "#{word}:#{link}"
 
     extension = link.match(/https?:\/\/.*\.(bmp|jpg|png|jpeg|gif)\??.*/i)[1]
 
+    filename = "#{word.to_ascii}.#{extension}"
+    fout.puts "#{word}:assets/#{filename}"
+
     # Download
-    File.open("apps/web/assets/images/#{word}.#{extension}", "wb") do |saved_file|
+    word = word.to_ascii
+    File.open("apps/web/assets/images/#{filename}", "wb") do |saved_file|
       open(link, "rb") do |read_file|
         saved_file.write(read_file.read)
       end
