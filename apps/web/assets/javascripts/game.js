@@ -1,11 +1,4 @@
 // Convert files array to a hash
-files = files.map(function (name) { return [name.replace(/.*\//, '').replace(/\..*/, ''), 'assets/'+name.replace(/.*\//,'')] })
-var files = files.reduce(function (o, currentArray) {
-  var key = currentArray[0], value = currentArray[1]
-  o[key] = value
-  return o
-}, {})
-
 window.names = Object.keys(files)
 window.lastName = ""
 window.buttons = []
@@ -15,8 +8,10 @@ function randInt(max) {
 }
 
 function getWords(numWords) {
-  if (numWords > names.length)
+  if (numWords > names.length) {
     console.error('Array too small!')
+    return
+  }
 
   words = []
   for(i=0; i< numWords; i++) {
