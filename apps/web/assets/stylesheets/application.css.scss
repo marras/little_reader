@@ -44,8 +44,16 @@ body {
 #error {
   @extend .result-box;
   .result {
+    background-color: #F88;
+  }
+}
+
+#end {
+  @extend .result-box;
+  .result {
     background-color: #F00;
   }
+  z-index: 100;
 }
 
 #image {

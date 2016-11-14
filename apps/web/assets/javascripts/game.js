@@ -25,18 +25,39 @@ function getWords(numWords) {
   return words
 }
 
+gainLife = function () {
+  life = document.createElement('img')
+  life.src = 'assets/heart.png'
+  life.width = 32
+  life.height = 32
+  document.getElementById('lives').appendChild(life)
+}
+
+loseLife = function () {
+  lives = document.getElementById('lives')
+  life = lives.children[0]
+  if (!life) {
+    document.getElementById('end').hidden = false
+  }
+
+  lives.removeChild(life)
+}
+
 onSuccess = function () {
   document.getElementById('error').hidden = true
   document.getElementById('success').hidden = false
   document.getElementById('image').onload = function() {
     document.getElementById('success').hidden = true
   }
+  gainLife()
   newQuestion()
 }
 
 onError = function () {
   document.getElementById('error').hidden = false
   document.getElementById('success').hidden = true
+
+  loseLife()
 }
 
 newQuestion = function () {
