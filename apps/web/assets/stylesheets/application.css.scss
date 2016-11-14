@@ -2,6 +2,16 @@ body {
   font-family: sans-serif;
 }
 
+#lives {
+  width: 100%;
+  text-align: center;
+  margin: 10 0;
+
+  img {
+    display: inline-block;
+  }
+}
+
 .result {
   margin: auto;
   width: 40%;
