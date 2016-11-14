@@ -1,8 +1,13 @@
-.result-box {
+body {
+  font-family: sans-serif;
+}
+
+.result {
   margin: auto;
-  width: 50%;
+  width: 40%;
   height: 200px;
   font-size: 40pt;
+  z-index: 5;
   p {
     padding-top: 80px;
     display: block;
@@ -10,14 +15,27 @@
   }
 }
 
+.result-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  background-color: rgba(200,200,200,0.8);
+}
+
 #success {
   @extend .result-box;
-  background-color: #0F0;
+  .result {
+    background-color: #0F0;
+  }
 }
 
 #error {
   @extend .result-box;
-  background-color: #F00;
+  .result {
+    background-color: #F00;
+  }
 }
 
 #image {
