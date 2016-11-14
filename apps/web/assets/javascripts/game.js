@@ -28,7 +28,10 @@ function getWords(numWords) {
 onSuccess = function () {
   document.getElementById('error').hidden = true
   document.getElementById('success').hidden = false
-  setTimeout(newQuestion, 2000)
+  document.getElementById('image').onload = function() {
+    document.getElementById('success').hidden = true
+  }
+  newQuestion()
 }
 
 onError = function () {
@@ -65,6 +68,10 @@ newQuestion = function () {
     button.appendChild(link)
     buttonsDiv.appendChild(button)
   }
+}
+
+document.getElementById('error').onclick = function () {
+  document.getElementById('error').hidden = true
 }
 
 newQuestion()
