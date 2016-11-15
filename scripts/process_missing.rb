@@ -16,7 +16,7 @@ File.readlines('lista.txt').map(&:strip).each do |word|
     next
   end
 
-  link = google.search(word, 2)
+  link = google.search("#{word} #{ARGV.join(' ')}")
   puts link
 
   filename = google.process_link(word, link)
