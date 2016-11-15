@@ -1,6 +1,6 @@
 // Convert files array to a hash
 window.names = Object.keys(files)
-window.lastName = ""
+window.goodWord = ""
 window.buttons = []
 
 function randInt(max) {
@@ -8,7 +8,7 @@ function randInt(max) {
 }
 
 function getWords(numWords) {
-  if (numWords > names.length) {
+  if (numWords + 1 > names.length) {
     console.error('Array too small!')
     return
   }
@@ -16,7 +16,7 @@ function getWords(numWords) {
   words = []
   for(i=0; i< numWords; i++) {
     var word = names[randInt(names.length)];
-    if (words.indexOf(word) === -1)
+    if (words.indexOf(word) === -1 && word != goodWord)
       words.push(word)
     else
       i--
@@ -70,6 +70,7 @@ newQuestion = function () {
   numWords = 3
   words = getWords(numWords)
   goodWordIndex = randInt(numWords)
+  goodWord = words[goodWordIndex]
 
   document.getElementById('image').src = files[words[goodWordIndex]]
 
