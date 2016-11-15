@@ -2,28 +2,23 @@
 require 'unidecoder'
 require_relative 'google'
 
-output = {}
-
 api_key = IO.read('api_key')
 puts "API key: #{api_key}"
 google = Google.new(api_key)
 
-current_words = File.readlines('mapping').map(&:strip).map do |line|
-  line.split(':').first
-end
-
-fout = File.open('mapping', 'at')
+mapping_lines = File.readlines('mapping').map(&:strip).map{ |line| line.split(':') }
+current_words = Hash[mapping_lines]
 
 File.readlines('lista.txt').map(&:word).each do |word|
   print "Processing word: '#{word}': "
-  if current_words.include? word
+  if current_words.keys.include? word
     puts "Already mapped!"
     next
   end
 
   link = google.search(word, 2)
   puts link
-  output[word] = link
+  current_words[word] = link
 
   match_extension = link.match(/https?:\/\/.*\.(bmp|jpg|png|jpeg|gif)\??.*/i)
   if match_extension
@@ -40,4 +35,8 @@ File.readlines('lista.txt').map(&:word).each do |word|
   end
 
   sleep 2
+end
+
+File.open('mapping', 'wt') do |fout|
+  current_words.each { |word, link| fout.puts "#{word}:#{link}" }
 end
