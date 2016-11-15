@@ -24,4 +24,17 @@ class Google
       end
     end
   end
+
+  def process_link(word, link)
+    match_extension = link.match(/https?:\/\/.*\.(bmp|jpg|png|jpeg|gif)\??.*/i)
+    if match_extension
+      extension = match_extension[1]
+
+      filename = "#{word.to_ascii}.#{extension}"
+      save_file(link, "tmp/#{filename}")
+    else
+      puts "Incompatible image format!" and return
+    end
+    filename
+  end
 end
