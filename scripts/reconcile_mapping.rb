@@ -5,7 +5,7 @@ require_relative 'google'
 mapping_lines = File.readlines('mapping').map(&:strip).map{ |line| line.split(':') }
 current_words = Hash[mapping_lines]
 
-PATH='tmp'
+PATH='tmp/new_images'
 
 puts "This script will remove any entries not matched by images in #{PATH}/ directory from mapping!"
 sleep 3

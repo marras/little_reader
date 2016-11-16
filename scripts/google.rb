@@ -31,7 +31,7 @@ class Google
       extension = match_extension[1]
 
       filename = "#{word.to_ascii}.#{extension}"
-      save_file(link, "tmp/#{filename}")
+      save_file(link, "tmp/new_images/#{filename}")
     else
       puts "Incompatible image format!" and return
     end
