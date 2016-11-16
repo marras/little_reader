@@ -3,6 +3,10 @@ GEM
   specs:
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     capybara (2.10.1)
       addressable
       mime-types (>= 1.16)
@@ -97,6 +101,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  babel-transpiler
   bundler
   capybara
   haml

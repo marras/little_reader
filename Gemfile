@@ -11,6 +11,7 @@ gem 'sass'
 gem 'uglifier'
 gem 'pry'
 gem 'unidecoder'
+gem 'babel-transpiler'
 
 group :test do
   gem 'minitest'
