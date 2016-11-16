@@ -2,27 +2,13 @@
 window.names = Object.keys(files)
 window.goodWord = ""
 window.buttons = []
+window.level = 0
+window.learningCurve = 0.0
+
+nGrams = NGrams(window.names)
 
 function randInt(max) {
   return Math.floor(Math.random() * max)
-}
-
-function getWords(numWords) {
-  if (numWords + 1 > names.length) {
-    console.error('Array too small!')
-    return
-  }
-
-  words = []
-  for(i=0; i< numWords; i++) {
-    var word = names[randInt(names.length)];
-    if (words.indexOf(word) === -1 && word != goodWord)
-      words.push(word)
-    else
-      i--
-  }
-
-  return words
 }
 
 gainLife = function () {
@@ -67,8 +53,8 @@ newQuestion = function () {
   }
   window.buttons = []
 
-  numWords = 3
-  words = getWords(numWords)
+  numWords = 3 + level / 3
+  words = nGrams.getRandomWords(numWords)
   goodWordIndex = randInt(numWords)
   goodWord = words[goodWordIndex]
 
