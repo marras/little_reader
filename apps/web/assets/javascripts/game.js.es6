@@ -5,7 +5,7 @@ window.$ = (...args) => document.querySelector(args)
 window.names = Object.keys(files)
 window.goodWord = ""
 window.buttons = []
-window.level = 0
+window.level = 20
 window.learningCurve = 0.0
 
 var generator = NGrams(window.names)
@@ -55,8 +55,8 @@ var newQuestion = function () {
   }
   window.buttons = []
 
-  let numWords = 3 + level / 3
-  const { words, goodWord } = generator.getRandomWords(numWords)
+  let numWords = 3 + level / 5
+  const { words, goodWord } = generator.getRandomWords(numWords, level)
 
   document.getElementById('image').src = files[goodWord]
 

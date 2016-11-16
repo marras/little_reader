@@ -13,7 +13,7 @@ const NGrams = function(names) {
 
       // Capitalization probability: 0 at first, 0.5 max
       let probCapitalLetters = 0.5 * level / (level + 1)
-      let capitalize = Math.rand < probCapitalLetters
+      let capitalize = Math.random() < probCapitalLetters
 
       let words = []
       for(let i=0; i< numWords; i++) {
