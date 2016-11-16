@@ -5,7 +5,7 @@ window.buttons = []
 window.level = 0
 window.learningCurve = 0.0
 
-nGrams = NGrams(window.names)
+var generator = NGrams(window.names)
 
 function randInt(max) {
   return Math.floor(Math.random() * max)
@@ -54,7 +54,7 @@ newQuestion = function () {
   window.buttons = []
 
   numWords = 3 + level / 3
-  words = nGrams.getRandomWords(numWords)
+  words = generator.getRandomWords(numWords)
   goodWordIndex = randInt(numWords)
   goodWord = words[goodWordIndex]
 
