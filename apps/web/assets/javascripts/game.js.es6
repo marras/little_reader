@@ -7,10 +7,6 @@ window.learningCurve = 0.0
 
 var generator = NGrams(window.names)
 
-function randInt(max) {
-  return Math.floor(Math.random() * max)
-}
-
 gainLife = function () {
   life = document.createElement('img')
   life.src = 'assets/heart.png'
@@ -54,11 +50,9 @@ newQuestion = function () {
   window.buttons = []
 
   numWords = 3 + level / 3
-  words = generator.getRandomWords(numWords)
-  goodWordIndex = randInt(numWords)
-  goodWord = words[goodWordIndex]
+  const { words, goodIndex } = generator.getRandomWords(numWords)
 
-  document.getElementById('image').src = files[words[goodWordIndex]]
+  document.getElementById('image').src = files[words[goodIndex]]
 
   for (i=0; i < numWords; i ++) {
     word = words[i]
@@ -68,7 +62,7 @@ newQuestion = function () {
     link = document.createElement('a')
     link.text = word
     link.href = '#'
-    if (i === goodWordIndex) {
+    if (i === goodIndex) {
       link.onclick = onSuccess
     } else {
       link.onclick = onError
