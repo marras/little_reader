@@ -1,9 +1,5 @@
 const randInt = (max) => Math.floor(Math.random() * max)
 
-const withProbability = (prob, func) => {
-  
-}
-
 const NGrams = function(names) {
   return {
     getWeighted: () => {
@@ -16,7 +12,7 @@ const NGrams = function(names) {
       }
 
       let words = []
-      for(i=0; i< numWords; i++) {
+      for(let i=0; i< numWords; i++) {
         var word = names[randInt(names.length)];
 
         if (words.indexOf(word) === -1 && word != goodWord)
@@ -25,9 +21,9 @@ const NGrams = function(names) {
           i--
       }
 
-      goodIndex = randInt(numWords)
+      let goodIndex = randInt(numWords)
       window.goodWord = words[goodIndex]
-      return { words, goodIndex }
+      return { words, goodWord: window.goodWord }
     },
   }
 }

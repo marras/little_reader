@@ -1,3 +1,6 @@
+// jQuery dla ubogich
+window.$ = (...args) => document.querySelector(args)
+
 // Convert files array to a hash
 window.names = Object.keys(files)
 window.goodWord = ""
@@ -7,17 +10,17 @@ window.learningCurve = 0.0
 
 var generator = NGrams(window.names)
 
-gainLife = function () {
-  life = document.createElement('img')
+var gainLife = function () {
+  let life = document.createElement('img')
   life.src = 'assets/heart.png'
   life.width = 32
   life.height = 32
   document.getElementById('lives').appendChild(life)
 }
 
-loseLife = function () {
-  lives = document.getElementById('lives')
-  life = lives.children[0]
+var loseLife = function () {
+  let lives = document.getElementById('lives')
+  let life = lives.children[0]
   if (!life) {
     document.getElementById('end').hidden = false
   }
@@ -25,51 +28,51 @@ loseLife = function () {
   lives.removeChild(life)
 }
 
-onSuccess = function () {
+var onSuccess = function () {
   document.getElementById('error').hidden = true
   document.getElementById('success').hidden = false
   document.getElementById('image').onload = function() {
     document.getElementById('success').hidden = true
   }
   gainLife()
+  level++
   newQuestion()
 }
 
-onError = function () {
+var onError = function () {
   document.getElementById('error').hidden = false
   document.getElementById('success').hidden = true
 
   loseLife()
 }
 
-newQuestion = function () {
-  buttonsDiv = document.getElementById('buttons')
-  for (i=0; i < buttons.length; i++) {
+var newQuestion = function () {
+  $('#level span').innerHTML = level // display level info
+
+  let buttonsDiv = document.getElementById('buttons')
+  for (let i=0; i < buttons.length; i++) {
     buttonsDiv.removeChild(buttons[i])
   }
   window.buttons = []
 
-  numWords = 3 + level / 3
-  const { words, goodIndex } = generator.getRandomWords(numWords)
+  let numWords = 3 + level / 3
+  const { words, goodWord } = generator.getRandomWords(numWords)
 
-  document.getElementById('image').src = files[words[goodIndex]]
+  document.getElementById('image').src = files[goodWord]
 
-  for (i=0; i < numWords; i ++) {
-    word = words[i]
-    button = document.createElement('div')
+  words.forEach((word) => {
+    let button = document.createElement('div')
     button.className = 'link'
     buttons.push(button)
-    link = document.createElement('a')
+
+    let link = document.createElement('a')
     link.text = word
     link.href = '#'
-    if (i === goodIndex) {
-      link.onclick = onSuccess
-    } else {
-      link.onclick = onError
-    }
+    link.onclick = (word === goodWord) ? onSuccess : onError
+
     button.appendChild(link)
     buttonsDiv.appendChild(button)
-  }
+  })
 }
 
 document.getElementById('error').onclick = function () {
