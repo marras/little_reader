@@ -5,8 +5,8 @@ window.$ = (...args) => document.querySelector(args)
 window.names = Object.keys(files)
 window.goodWord = ""
 window.buttons = []
-window.level = 20
-window.learningCurve = 0.0
+window.level = 1
+//window.learningCurve = 0.0
 
 var generator = NGrams(window.names)
 
