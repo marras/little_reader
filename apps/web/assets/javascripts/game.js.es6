@@ -58,7 +58,7 @@ var newQuestion = function () {
   let numWords = 3 + level / 5
   const { words, goodWord } = generator.getRandomWords(numWords, level)
 
-  document.getElementById('image').src = files[goodWord]
+  document.getElementById('image').src = files[goodWord.toLowerCase()]
 
   words.forEach((word) => {
     let button = document.createElement('div')
