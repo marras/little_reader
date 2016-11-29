@@ -57,7 +57,7 @@ end
 # MAIN PROGRAM
 say("Cześć! Pobawmy się w pisanie!")
 
-list = File.readlines('lista.txt').map(&:strip).shuffle.first(2)
+list = File.readlines('lista.txt').map(&:strip).shuffle
 
 begin
   system("stty raw -echo")
