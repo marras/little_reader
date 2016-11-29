@@ -34,8 +34,8 @@ var onSuccess = function () {
   document.getElementById('image').onload = function() {
     document.getElementById('success').hidden = true
   }
-  gainLife()
   level++
+  if (level % 5 == 0) gainLife()
   newQuestion()
 }
 
