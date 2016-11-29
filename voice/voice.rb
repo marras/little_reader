@@ -5,7 +5,6 @@ def say(text)
 end
 
 def ask(word)
-  say "Napiszmy: #{word}"
   typed = []
   errors = 0
   word.each_char do |char|
@@ -43,12 +42,15 @@ end
 
 def main_loop(list)
   list.each do |word|
+    say "Napiszmy: #{word}"
+    puts "\n#{word}\r"
+
     if ask(word)
       say "Świetnie!"
     else
       say "Nic nie szkodzi!"
     end
-    puts
+    puts "\n"
   end
 end
 
