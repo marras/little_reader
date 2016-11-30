@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'io/wait'
 
 def say(text)
   `say -v Zosia #{text}`
@@ -9,6 +10,9 @@ def ask(word)
   errors = 0
   word.each_char do |char|
     say "Naciśnij: #{char}"
+    while $stdin.ready?
+      pressed = STDIN.getc
+    end
     pressed = STDIN.getc
 
     return false if pressed == "\e" # ESC
